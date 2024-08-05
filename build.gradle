@@ -5,6 +5,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
 }
 
 repositories {
@@ -27,10 +28,76 @@ version = '1.2.0'
 description = 'Remark'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+    failOnError = false
+}
+
+ext {
+    repoUrl = 'https://github.com/simonpoole/remark-java.git'
+    spdxId = 'Apache-2.0'
+}
+
 publishing {
     publications {
-        maven(MavenPublication) {
-            from(components.java)
+        Release(MavenPublication) {
+            from components.java
+            groupId 'ch.poole.div'
+            artifactId 'remark'
+            pom {
+                name = artifactId
+                description = 'Remark is a library for taking (X)HTML input and outputting clean Markdown, Markdown Extra, or MultiMarkdown compatible text.' 
+                url = 'https://github.com/simonpoole/remark-java'
+                scm {
+                    url = repoUrl
+                }
+                licenses {
+                    license {
+                        name = spdxId
+                        url = 'https://raw.githubusercontent.com/simonpoole/remark-java/master/LICENCE'
+                    }
+                }
+                developers {
+                    developer {
+                        name='Phil DeJarnett'
+                        organization='OverZealous Creations, LLC'
+                    }
+                    developer {
+                        name = 'Guilherme I F L Weizenmann'
+                        email='g.weizenmann@gmail.com'
+                        organization='ITQuasar'
+                    }
+                    developer {
+                        name = 'Simon Poole'
+                    }
+                }
+                contributors {
+                    contributor {
+                        name='Alex Boyko'
+                    }   
+                }
+            }
+            repositories {
+                maven {
+                    name = 'sonatype'
+                    credentials {
+                        username System.getenv('SONATYPE_USER')
+                        password System.getenv('SONATYPE_PASSWORD')
+                    }
+                    def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                    url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                }
+            }
         }
     }
+}
+
+signing {
+    sign publishing.publications.Release
 }
