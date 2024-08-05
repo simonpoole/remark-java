@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/giflw/remark-java.svg?branch=master)](https://travis-ci.org/giflw/remark-java)
+This is a hard fork of the original library as the original authors are AWOL. There are still a couple of rough edges, in particular at least one test fails, but this seems to just be a minor formatting issue.
 
 
 # OverZealous Creations Remark

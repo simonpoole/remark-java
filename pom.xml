@@ -3,9 +3,9 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.overzealous</groupId>
+    <groupId>ch.poole.div</groupId>
     <artifactId>remark</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <inceptionYear>2011</inceptionYear>
     <name>Remark</name>
     <description>Remark is a library for taking (X)HTML input and outputting clean Markdown, Markdown Extra, or
@@ -37,6 +37,13 @@
                 <role>Developer</role>
             </roles>
         </developer>
+        <developer>
+            <name>Simon Poole</name>
+            <email>simon@poole.ch</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
     </developers>
     <contributors>
         <contributor>
@@ -47,9 +54,9 @@
         </contributor>
     </contributors>
     <scm>
-        <connection>scm:git:git@github.com:giflw/remark-java.git</connection>
-        <developerConnection>scm:git:git@github.com:giflw/remark-java.git</developerConnection>
-        <url>git@github.com:giflw/remark-java.git</url>
+        <connection>scm:git:git@github.com:simonpoole/remark-java.git</connection>
+        <developerConnection>scm:git:git@github.com:simonpoole/remark-java.git</developerConnection>
+        <url>git@github.com:simonpoole/remark-java.git</url>
     </scm>
     <distributionManagement>
         <repository>
@@ -68,26 +75,26 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>2.16.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
-            <version>1.6.3</version>
+            <version>1.18.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
+            <version>3.15.0</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <!-- needed to use command line utility -->
             <groupId>commons-cli</groupId>
             <artifactId>commons-cli</artifactId>
-            <version>1.2</version>
+            <version>1.8.0</version>
             <scope>compile</scope>
             <optional>true</optional>
         </dependency>
